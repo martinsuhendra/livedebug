@@ -29,7 +29,7 @@
         <button
           class="bg-indigo text-white font-semibold rounded-r h-11 w-1/5 ml-auto"
           type="submit"
-          @submit.prevent="findCollections"
+          @click.prevent="findCollections"
         >
           <span v-show="!loading">Find Collections</span>
           <i class="fas fa-spinner fa-2x fa-spin" v-show="loading"></i>
@@ -39,27 +39,31 @@
 
     <!-- List Interface -->
     <div class="flex flex-wrap justify-between item-center content-center">
+   
       <gallery
         v-for="(favorite, index) in collections"
         :key="index"
         :name="favorite.name"
         :covers="favorite.covers"
         :description="favorite.description"
+        :views="favorite.stats.views"
+        :appreciations="favorite.stats.appreciations"
+        :comments="favorite.stats.comments"
       >
         <div>
           <div class="border-b border-grey-light mb-2 py-2"></div>
           <div class="flex justify-between">
-            <div>
+            <div class="views">
               <p class="text-sm text-grey-dark mb-1">Views</p>
               <p class="text-lg text-dark font-semibold">{{ favorite.stats.views}}</p>
             </div>
 
-            <div>
+            <div class="appreciations">
               <p class="text-sm text-grey-dark mb-1">Appreciations</p>
               <p class="text-lg text-dark font-semibold">{{ favorite.stats.appreciations}}</p>
             </div>
 
-            <div>
+            <div class="comments">
               <p class="text-sm text-grey-dark mb-1">Comments</p>
               <p class="text-lg text-dark font-semibold">{{ favorite.stats.comments}}</p>
             </div>
@@ -75,7 +79,7 @@ import Gallery from '@/components/Gallery.vue'
 
 export default {
   data () {
-    const returnData = {
+    return  {
       search: '',
       loading: false
     }

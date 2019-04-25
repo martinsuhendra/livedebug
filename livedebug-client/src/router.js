@@ -20,7 +20,7 @@ export default new Router({
       children: [
         {
           path: ':behanceId',
-          name: 'User Gallery',
+          name: 'UserGallery',
           component: UserGallery
         }
       ]

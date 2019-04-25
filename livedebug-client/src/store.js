@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from './helpers/axios'
 
+Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     users: '',
@@ -19,10 +20,11 @@ export default new Vuex.Store({
     },
 
     setProjects (state, payload) {
-      state.projects = payload
+      state.projects = payload      
     },
 
     setCollections (state, payload) {
+      
       state.collections = payload
     },
 
@@ -38,6 +40,8 @@ export default new Vuex.Store({
     },
 
     fetchProject (context, id) {
+      ;
+      
       return axios.get(`/projects/${id}`).then(({ data }) => {
         context.commit('setProjects', { data })
       })
@@ -45,6 +49,8 @@ export default new Vuex.Store({
 
     findCollections (context, query) {
       return axios.get(`/collections/?q=${query}`).then(({ data }) => {
+        console.log(data);
+        
         context.commit('setCollections', data)
       })
     },

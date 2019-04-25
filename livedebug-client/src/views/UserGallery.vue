@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-if="isLoading"/>
-    <h3 class="text-dark text-xl mb-4" v-if="!isLoading">{{ user.display_name}} Project</h3>
+    <h3 class="text-dark text-xl mb-4" v-if="!isLoading">{{user}} Project</h3>
     <div class="flex flex-wrap justify-between item-center content-center" v-if="!isLoading">
       <gallery
         v-for="(project, index) in projects"
@@ -30,8 +30,9 @@
 <script>
 import Gallery from '@/components/Gallery.vue'
 import Loading from '@/components/Loading.vue'
-
+import { mapState } from 'vuex'
 export default {
+  name: 'UserGallery',
   components: {
     Gallery,
     Loading
@@ -56,8 +57,9 @@ export default {
   },
 
   computed: {
+    ...mapState(['projects']),
     user () {
-      return this.store.state.projects.user
+      return this.$store.state.projects.user
     },
 
     projects () {

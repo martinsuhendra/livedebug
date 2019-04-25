@@ -37,6 +37,7 @@
 import Gallery from "@/components/Gallery.vue";
 
 export default {
+  name: 'Favorite',
   props: ["favorites"],
 
   components: {

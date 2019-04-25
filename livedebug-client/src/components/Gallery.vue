@@ -6,7 +6,7 @@
     ></div>
     <div class="bg-white rounded-b p-4 flex flex-col justify-between leading-normal flex-grow">
       <div class="mb-8">
-        <div class="text-black font-bold text-xl mb-2">{{ name}}</div>
+        <div class="text-black font-bold text-xl mb-2">{{name}}</div>
         <p class="text-grey-darker text-base">{{ description }}</p>
       </div>
       <div class="mt-2">
@@ -18,7 +18,8 @@
 
 <script>
 export default {
-  props: [],
+  name: 'Gallery',
+  props: ['name','description','stats',''],
   computed: {
     coverUrl () {
       return {
